@@ -147,6 +147,11 @@ function xhrRequest(url, imageId, defaultHeaders = {}, params = {}) {
         percentComplete,
       };
 
+      const imageLoadProgressEvt = new CustomEvent('imageloadprogress', {
+        detail: eventData,
+      });
+      document.dispatchEvent(imageLoadProgressEvt);
+
       cornerstone.triggerEvent(
         cornerstone.events,
         cornerstone.EVENTS.IMAGE_LOAD_PROGRESS,
